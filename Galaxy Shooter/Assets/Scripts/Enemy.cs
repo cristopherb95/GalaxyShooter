@@ -8,10 +8,26 @@ public class Enemy : MonoBehaviour
     private float _speed = 4.0f;
 
     private Player _player;
+
+    private Animator _anim;
+
+    private AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _anim = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+
+        if (!_player)
+            Debug.LogError("Player is NULL");
+
+        if (!_anim)
+            Debug.LogError("Animator is null");
+
+        if (!_audioSource)
+            Debug.LogError("AudioSource on the enemy is NULL");
     }
 
     // Update is called once per frame
@@ -34,8 +50,11 @@ public class Enemy : MonoBehaviour
 
             if (player != null)
                 player.Damage();
-
-            Destroy(this.gameObject);
+            _anim.SetTrigger("OnEnemyDeath");
+            this._speed = 0;
+            _audioSource.Play();
+            Destroy(GetComponent<Collider2D>());
+            Destroy(this.gameObject, 2.5f);
         }
 
         if (other.gameObject.CompareTag("Laser"))
@@ -46,10 +65,13 @@ public class Enemy : MonoBehaviour
             {
                 _player.AddToScore(10);
             }
+            _anim.SetTrigger("OnEnemyDeath");
+            this._speed = 0;
+            _audioSource.Play();
 
-            Destroy(this.gameObject);
+            Destroy(GetComponent<Collider2D>());
+            Destroy(this.gameObject, 2.5f);
         }
-
         // Debug.Log("Hit: " + other.transform.name);
     }
 }

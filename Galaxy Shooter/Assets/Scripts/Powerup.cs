@@ -16,6 +16,8 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private PowerupType powerupID;
 
+    [SerializeField]
+    private AudioClip _clip;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,8 @@ public class Powerup : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             var player = other.transform.GetComponent<Player>();
+            AudioSource.PlayClipAtPoint(_clip, transform.position);
+
             if (player != null)
             {
                 switch (powerupID)
