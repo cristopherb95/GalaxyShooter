@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
     private AudioClip _laserSoundClip;
     private AudioSource _audioSource;
 
+    private bool _speedBoostCooldownActive = false;
+    private bool _tripleShotCooldownActive = false;
+
     void Start()
     {
         transform.position = new Vector3(0, -3, 0);
@@ -110,25 +113,41 @@ public class Player : MonoBehaviour
     public void ActivateTripleShot()
     {
         _isTrippleShootAcitve = true;
-        StartCoroutine(TripleShotPowerDownRoutine());
+
+        if (_tripleShotCooldownActive == true)
+        {
+            StopCoroutine("TripleShotPowerDownRoutine");
+        }
+
+        StartCoroutine("TripleShotPowerDownRoutine");
     }
 
     private IEnumerator TripleShotPowerDownRoutine()
     {
+        _tripleShotCooldownActive = true;
         yield return new WaitForSeconds(5.0f);
         _isTrippleShootAcitve = false;
+        _tripleShotCooldownActive = false;
     }
 
     public void ActivateSpeedBoost()
     {
         _isSpeedBoostAcitve = true;
-        StartCoroutine(SpeedBoostPowerDownRoutine());
+
+        if (_speedBoostCooldownActive == true)
+        {
+            StopCoroutine("SpeedBoostPowerDownRoutine");
+        }
+
+        StartCoroutine("SpeedBoostPowerDownRoutine");
     }
 
     private IEnumerator SpeedBoostPowerDownRoutine()
     {
+        _speedBoostCooldownActive = true;
         yield return new WaitForSeconds(5.0f);
         _isSpeedBoostAcitve = false;
+        _speedBoostCooldownActive = false;
     }
 
     public void ActivateShield()
@@ -162,6 +181,7 @@ public class Player : MonoBehaviour
         if (_lives <= 0)
         {
             _spawnManager.OnPlayerDeath();
+            _uiManager.CheckForBestScore();
             Destroy(this.gameObject);
         }
     }
@@ -172,6 +192,10 @@ public class Player : MonoBehaviour
         _uiManager.UpdateScore(_score);
     }
 
+    public int getPlayerScore()
+    {
+        return _score;
+    }
 
 
 

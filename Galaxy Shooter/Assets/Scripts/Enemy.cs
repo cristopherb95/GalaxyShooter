@@ -6,6 +6,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 4.0f;
+    private float _speedAddition = 0.0f;
+
+    [SerializeField]
+    private GameObject _laserPrefab;
+    private float _fireRate = 3.0f;
+    private float _canFire = -1;
 
     private Player _player;
 
@@ -33,7 +39,19 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        CalculateMovement();
+
+        if (Time.time > _canFire)
+        {
+            _fireRate = Random.Range(3, 8);
+            _canFire +=Time.time + _fireRate;
+            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
+    void CalculateMovement()
+    {
+        transform.Translate(Vector3.down * (_speed + _speedAddition) * Time.deltaTime);
 
         if (transform.position.y < -6.5f)
         {
@@ -73,5 +91,10 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject, 2.5f);
         }
         // Debug.Log("Hit: " + other.transform.name);
+    }
+
+    public void IncreaseSpeed(float speedValue)
+    {
+        _speedAddition += speedValue;
     }
 }

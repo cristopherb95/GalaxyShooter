@@ -16,6 +16,11 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MoveUp();
+    }
+
+    void MoveUp()
+    {
         transform.Translate(Vector3.up * _speed * Time.deltaTime);
 
         if (transform.position.y > 8.0f)
@@ -27,4 +32,5 @@ public class Laser : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
 }

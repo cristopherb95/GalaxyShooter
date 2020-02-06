@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool _isGameOver;
 
+    [SerializeField]
+    private GameObject _pauseMenuPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +24,38 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(1); // Current Game Scene
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 1)
+            {
+                Pause();
+            }
+            else
+            {
+                UnPause();
+            }
+        }
     }
 
     public void GameOver()
     {
         _isGameOver = true;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        _pauseMenuPanel.SetActive(true);
+    }
+    public void UnPause()
+    {
+        Time.timeScale = 1;
+        _pauseMenuPanel.SetActive(false);
     }
 }

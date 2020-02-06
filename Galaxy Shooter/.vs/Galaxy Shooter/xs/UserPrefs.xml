@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{BB45C5EF-94AE-6523-5712-AD01709C9D01}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Laser.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Powerup.cs" Line="44" Column="46" />
-      <File FileName="Assets/Scripts/Asteroid.cs" Line="33" Column="1" />
-      <File FileName="Assets/Scripts/SpawnManager.cs" Line="49" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="164" Column="40" />
-      <File FileName="Assets/Scripts/UIManager.cs" Line="25" Column="22" />
-      <File FileName="Assets/Scripts/Enemy.cs" Line="64" Column="33" />
-      <File FileName="Assets/Scripts/Laser.cs" Line="31" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="183" Column="43" />
+      <File FileName="Assets/Scripts/Laser.cs" />
+      <File FileName="Assets/Scripts/SpawnManager.cs" Line="57" Column="47" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="31" Column="10" />
+      <File FileName="Assets/Scripts/UIManager.cs" Line="44" Column="6" />
+      <File FileName="Assets/Scripts/Main_Menu/MainMenu.cs" Line="24" Column="28" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="82" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +16,7 @@
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="Main_Menu" expanded="True" />
-                <Node name="Laser.cs" selected="True" />
+                <Node name="UIManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -26,7 +26,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9ecf02bd-1580-4da7-89fe-1e167dbfa734" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="00d65822-54bb-4a68-a7d9-764048d11885" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
