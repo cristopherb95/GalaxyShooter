@@ -40,8 +40,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         CalculateMovement();
-
-        if (Time.time > _canFire)
+        // Prevent shooting if enemy death animation is triggered
+        if (Time.time > _canFire && !_anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Destroyed_anim"))
         {
             _fireRate = Random.Range(3, 8);
             _canFire +=Time.time + _fireRate;
