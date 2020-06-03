@@ -2,7 +2,7 @@
 
 ## You can play the game at: https://sharemygame.com/@cristopherb95/galaxy-shooter
 
-Game was created with unity. Try to shoot enemies, collect powerups and get your own highest score! Development was done for desktop in mind, so WebGL build can be a bit laggy.
+Game was created with unity. Try to shoot enemies, collect powerups and get your own highest score. Development was done for desktop in mind, so WebGL build can be a bit laggy.
 
 ### Game Controls:
 * Movement: WSAD or arrow keys
